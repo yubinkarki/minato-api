@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    // basic options and module settings
+    "baseUrl": ".",
+    "rootDir": "./",
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "./build",
+    "moduleResolution": "bundler",
+
+    // strict type-checking options
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // additional options
+    "pretty": true,
+    "noEmit": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+
+    // path mapping
+    "paths": {
+      "@root/*": ["./*"],
+      "@src/*": ["./src/*"],
+      "@config/*": ["./src/config/*"],
+      "@module/*": ["./src/module/*"],
+      "@constant/*": ["./src/constant/*"]
+    }
+  },
+
+  // files to include/exclude
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "tests"],
+
+  // custom option for tsc alias
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true
+  }
+}
