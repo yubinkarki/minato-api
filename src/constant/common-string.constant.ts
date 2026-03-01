@@ -1,0 +1,54 @@
+import { join } from "node:path";
+import { readFileSync } from "node:fs";
+
+import { type PackageJsonType } from "./custom-type.constant";
+
+const packageJsonFilePath: string = join(process.cwd(), "/package.json");
+const packageJsonFile: PackageJsonType = JSON.parse(readFileSync(packageJsonFilePath, "utf-8"));
+
+export const appTestEnv = ["local", "development", "staging"] as const;
+
+export const appEmojis = {
+  warn: "❗️",
+  info: "🚀",
+  http: "🔗",
+  error: "❌",
+  debug: "🐛",
+  silly: "🤪",
+  verbose: "🔊",
+  fallback: "👽",
+} as const;
+
+export const appStrings = {
+  apiV1: "api/v1",
+  localEnvFile: ".env.local",
+  stagEnvFile: ".env.staging",
+  prodEnvFile: ".env.production",
+  devEnvFile: ".env.development",
+
+  date: "date",
+  name: "name",
+  email: "email",
+  endDate: "endDate",
+  uniqueId: "uniqueId",
+  startDate: "startDate",
+  identifier: "identifier",
+  macAddress: "macAddress",
+
+  fallbackPort: "8545",
+  dateFormat: "YYYY-MM-DD",
+  development: "development",
+  noRoute: "route does not exist",
+  appVersion: packageJsonFile.version,
+  dateTimeFormat: "YYYY-MM-DD HH:mm:ss",
+  startSuccess: "Minato API is running",
+  dbConnectionSuccess: "connected to database successfully",
+} as const;
+
+export const appRegex = {
+  namePattern: /^[a-zA-Z\s'-]{2,69}$/, // yubin karki
+  decimalPattern: /^\d{1,5}(\.\d{1,20})?$/, // 10200.365555
+  emailPattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // yubin@email.com
+  datePattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/, // 2020-05-14
+  versionPattern: /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/, // 1.1.1.1 or 999.999.999.999
+} as const;
