@@ -1,6 +1,6 @@
-!.env.sample
-
 node_modules/
 build/
 .env*
 .DS_Store
+
+!.env.sample
