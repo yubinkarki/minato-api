@@ -3,8 +3,8 @@
     // basic options and module settings
     "baseUrl": ".",
     "rootDir": "./",
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "esnext",
+    "module": "esnext",
     "outDir": "./build",
     "moduleResolution": "bundler",
 
@@ -31,11 +31,13 @@
 
     // path mapping
     "paths": {
-      "@root/*": ["./*"],
-      "@src/*": ["./src/*"],
-      "@config/*": ["./src/config/*"],
-      "@module/*": ["./src/module/*"],
-      "@constant/*": ["./src/constant/*"]
+      "#root/*": ["./*"],
+      "#src/*": ["./src/*"],
+      "#util/*": ["./src/util/*"],
+      "#route/*": ["./src/route/*"],
+      "#config/*": ["./src/config/*"],
+      "#module/*": ["./src/module/*"],
+      "#constant/*": ["./src/constant/*"]
     }
   },
 
