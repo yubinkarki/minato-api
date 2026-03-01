@@ -1,21 +1,27 @@
 {
-  "name": "minato-api",
-  "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "Yubin Karki",
   "type": "module",
-  "main": "index.js",
+  "license": "MIT",
+  "version": "1.0.0",
+  "name": "minato-api",
+  "author": "Yubin Karki",
+  "main": "build/src/app.js",
+  "description": "A simple rest api backend project with docker, node, express and such.",
+  "engines": {
+    "node": ">=24.14.0",
+    "npm": ">=11.11.0"
+  },
   "scripts": {
     "build": "npx tsc",
     "clean": "rm -rf node_modules && npm i",
-    "local": "node --experimental-strip-types --env-file=.env.local src/app.ts"
+    "live": "node --env-file=.env --import=tsx build/src/app.js",
+    "local": "tsx watch --clear-screen=false --env-file=.env.local src/app.ts"
   },
   "dependencies": {
     "express": "^5.2.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6"
+    "@types/express": "^5.0.6",
+    "tsx": "^4.21.0"
   }
 }
