@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const successCode = {
   // 200 series
   ok: 200,
@@ -43,5 +45,13 @@ export const errorCode = {
 
 export const errorMessage = {
   unknown: "something went wrong",
+  noRoute: "route does not exist",
+  systemStartError: "failed to start the application",
   missingRequiredEnv: "missing required env variables",
+} as const;
+
+export const successMessage = {
+  baseUrl: "this is the base url",
+  startSuccess: "Minato API is running",
+  dbConnectionSuccess: "connected to database successfully",
 } as const;
