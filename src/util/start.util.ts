@@ -1,6 +1,6 @@
 import { type Express, type Response, type Request, type NextFunction } from "express";
 
-import { appStrings } from "#constant/common-string.constant";
+import { successMessage, errorMessage } from "#constant/http.constant";
 
 /**
  * Middleware that sets various security headers on the response.
@@ -10,23 +10,14 @@ import { appStrings } from "#constant/common-string.constant";
  * @param {Response} res The Express response object
  * @param {NextFunction} next The next middleware function
  *
- * @description
- * Applies the following headers:
+ * @remarks
+ * Applies the following security headers:
  *
- * - **X-Frame-Options**: Prevents your site from being embedded in iframes on other domains
- *   - Value: `SAMEORIGIN`
- *
- * - **X-Content-Type-Options**: Tells the browser not to MIME-sniff and to strictly use the Content-Type header
- *   - Value: `nosniff`
- *
- * - **Cross-Origin-Resource-Policy (CORP)**: Restricts how other sites can embed or load your resources
- *   - Value: `same-origin`
- *
- * - **Referrer-Policy**: Controls how much of your URL is shared with the next site
- *   - Value: `strict-origin-when-cross-origin`
- *
- * - **Strict-Transport-Security (HSTS)**: Forces the browser to only connect via HTTPS for the specified time
- *   - Value: `max-age=2629800; includeSubDomains`
+ * - **X-Frame-Options** (`SAMEORIGIN`)
+ * - **X-Content-Type-Options** (`nosniff`)
+ * - **Cross-Origin-Resource-Policy** (`same-origin`)
+ * - **Referrer-Policy** (`strict-origin-when-cross-origin`)
+ * - **Strict-Transport-Security** (`max-age=2629800; includeSubDomains`)
  */
 export function securityHeaders(_: Request, res: Response, next: NextFunction): void {
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
@@ -44,32 +35,22 @@ export function securityHeaders(_: Request, res: Response, next: NextFunction): 
  * @function setupBase
  * @param {Express} app The Express application instance
  *
- * @description
+ * @remarks
  * Registers the following routes:
  *
- * - **Base Route**
- *   - Method: `GET`
- *   - Path: `/`
- *   - Purpose: Startup verification endpoint
- *   - Response: `200 OK` with a startup confirmation message
+ * - **Base Route** (`GET /`): Startup verification endpoint that returns `200 OK` with a confirmation message
+ * - **Fallback Route** (`ALL *`): Handles all undefined routes and returns `404 Not Found` with a generic message
  *
- * - **Fallback Route**
- *   - Method: `ALL`
- *   - Path: `*` (any unmatched route)
- *   - Purpose: Handles undefined routes
- *   - Response: `404 Not Found` with a generic message
- *
- * @remarks
- * The fallback route must be registered after all other routes to properly catch unmatched requests.
+ * The fallback route must be registered after all other routes to properly catch unmatched requests
  */
 export function setupBase(app: Express): void {
   // base route
   app.get("/", (_: Request, res: Response): void => {
-    res.status(200).send(`${appStrings.startSuccess}`);
+    res.status(200).send(`${successMessage.baseUrl}`);
   });
 
   // undefined route
   app.use((_: Request, res: Response): void => {
-    res.status(404).send(`${appStrings.noRoute}`);
+    res.status(404).send(`${errorMessage.noRoute}`);
   });
 }

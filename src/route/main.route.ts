@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { appStrings } from "#root/src/constant/common-string.constant";
+import { appStrings } from "#root/src/constant/string.constant";
 
 import { default as publicRoute } from "./public.route";
 
