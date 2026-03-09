@@ -7,23 +7,28 @@
   "main": "build/src/app.js",
   "description": "A simple rest api backend project with docker, node, express and such.",
   "engines": {
-    "node": ">=24.14.0",
-    "npm": ">=11.11.0"
+    "npm": ">=11.11.0",
+    "node": ">=24.14.0"
   },
   "scripts": {
+    "lint": "eslint .",
     "clean:build": "rm -rf build",
     "build": "npm run clean:build && tsc",
-    "local": "node --import=tsx --env-file=.env.local src/app.ts",
     "clean": "rm -rf node_modules package-lock.json && npm install",
-    "live": "node --import=tsx --env-file=.env.prod build/src/app.js"
+    "live": "node --import=tsx --env-file=.env.prod build/src/app.js",
+    "local": "tsx watch --clear-screen=false --env-file=.env.local src/app.ts"
   },
   "dependencies": {
-    "express": "^5.2.1",
-    "typescript": "^5.9.3"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.3.3",
-    "tsx": "^4.21.0"
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   }
 }
