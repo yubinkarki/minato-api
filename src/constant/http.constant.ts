@@ -44,13 +44,14 @@ export const errorCode = {
 } as const;
 
 export const errorMessage = {
-  unknown: "something went wrong",
+  generic: "something went wrong",
   noRoute: "route does not exist",
   systemStartError: "failed to start the application",
   missingRequiredEnv: "missing required env variables",
 } as const;
 
 export const successMessage = {
+  generic: "success",
   baseUrl: "this is the base url",
   startSuccess: "Minato API is running",
   dbConnectionSuccess: "connected to database successfully",
