@@ -10,3 +10,40 @@ export type PackageJsonType = {
   license: string;
   description: string;
 };
+
+export type ResponseDataType =
+  | string
+  | unknown
+  | (string | number | object)[]
+  | Record<string | number, string | number | object | (string | number | object)[]>;
+
+export type ResponseMessageType =
+  | "array"
+  | "string"
+  | "number"
+  | "bigint"
+  | "symbol"
+  | "object"
+  | "boolean"
+  | "function"
+  | "undefined";
+
+export type CookieType = {
+  name: string;
+  value: string;
+  options: {
+    path?: string;
+    expires?: Date;
+    maxAge?: number;
+    secure?: boolean;
+    httpOnly?: boolean;
+    sameSite?: "strict" | "lax" | "none";
+  };
+};
+
+export type FinalResponseType = {
+  success: boolean;
+  timestamp: string;
+  message?: ResponseDataType;
+  messageType: ResponseMessageType;
+};
