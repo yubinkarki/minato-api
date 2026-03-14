@@ -18,6 +18,9 @@ import { successMessage, errorMessage } from "#constant/http.constant";
  * - **Cross-Origin-Resource-Policy** (`same-origin`)
  * - **Referrer-Policy** (`strict-origin-when-cross-origin`)
  * - **Strict-Transport-Security** (`max-age=2629800; includeSubDomains`)
+ *
+ * @example
+ * app.use(securityHeaders);
  */
 export function securityHeaders(_: Request, res: Response, next: NextFunction): void {
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
@@ -42,6 +45,9 @@ export function securityHeaders(_: Request, res: Response, next: NextFunction): 
  * - **Fallback Route** (`ALL *`): Handles all undefined routes and returns `404 Not Found` with a generic message
  *
  * The fallback route must be registered after all other routes to properly catch unmatched requests
+ *
+ * @example
+ * setupBase(app);
  */
 export function setupBase(app: Express): void {
   // base route

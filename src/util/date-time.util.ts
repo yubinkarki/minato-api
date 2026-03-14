@@ -1,15 +1,19 @@
 /**
- * Generates a UTC timestamp in ISO 8601 format without milliseconds.
+ * Returns the current UTC timestamp as a space-separated date-time string.
  *
  * @function getIsoTimestamp
  *
- * @returns {string} The current UTC timestamp in format `YYYY-MM-DD HH:mm:ss`
+ * @returns {string} Current UTC time in the format YYYY-MM-DD HH:mm:ss (no milliseconds)
  *
  * @remarks
- * - Converts the current date and time to an ISO 8601 formatted string in UTC timezone
- * - Milliseconds are intentionally stripped for cleaner log output
- * - Returns UTC time, not local timezone, ensuring consistency across all timezones
+ * - Built from Date.toISOString(), so the value is UTC-based
+ * - The returned string is not strict ISO 8601 because it replaces "T" with a space and omits "Z"
+ * - Milliseconds are intentionally removed for cleaner log output
+ * - Useful for consistent server-side logging across environments
  * - Suitable for server logs and distributed system logging
+ *
+ * @example
+ * getIsoTimestamp(); // "2026-03-14 09:45:30"
  */
 export function getIsoTimestamp(): string {
   const now: Date = new Date();
