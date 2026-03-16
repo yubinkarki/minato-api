@@ -1,7 +1,7 @@
 {
   "type": "module",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "minato-api",
   "author": "Yubin Karki",
   "main": "build/src/app.js",
