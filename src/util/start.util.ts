@@ -1,6 +1,7 @@
 import { type Express, type Response, type Request, type NextFunction } from "express";
 
-import { successMessage, errorMessage } from "#constant/http.constant";
+import { sendError, sendSuccess } from "./helper.util";
+import { successMessage, errorMessage, errorCode } from "#constant/http.constant";
 
 /**
  * Middleware that sets various security headers on the response.
@@ -52,11 +53,12 @@ export function securityHeaders(_: Request, res: Response, next: NextFunction): 
 export function setupBase(app: Express): void {
   // base route
   app.get("/", (_: Request, res: Response): void => {
-    res.status(200).send(`${successMessage.baseUrl}`);
+    sendSuccess(res, successMessage.baseUrl);
   });
 
   // undefined route
   app.use((_: Request, res: Response): void => {
     res.status(404).send(`${errorMessage.noRoute}`);
+    sendError(res, errorMessage.noRoute, errorCode.notFoundException);
   });
 }
