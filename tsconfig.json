@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     // basic options and module settings
-    "baseUrl": ".",
-    "rootDir": "./",
     "target": "esnext",
     "module": "esnext",
+    "rootDir": "./src",
     "outDir": "./build",
     "moduleResolution": "bundler",
 
@@ -20,7 +19,6 @@
     "forceConsistentCasingInFileNames": true,
 
     // additional options
-    "pretty": true,
     "noEmit": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
