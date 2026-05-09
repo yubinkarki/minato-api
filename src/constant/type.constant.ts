@@ -47,3 +47,17 @@ export type FinalResponseType = {
   message?: ResponseDataType;
   messageType: ResponseMessageType;
 };
+
+export type DetailedStatusResponse = {
+  url: string;
+  uptime: number;
+  commit: string;
+  version: string;
+  environment: string;
+  nodeVersion: string;
+  memory: {
+    heapUsedMB: number;
+    rssMemoryMB: number;
+    heapTotalMB: number;
+  };
+};

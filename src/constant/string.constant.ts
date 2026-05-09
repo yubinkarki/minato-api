@@ -31,6 +31,7 @@ export const appStrings = {
   date: "date",
   name: "name",
   email: "email",
+  unknown: "unknown",
   endDate: "endDate",
   uniqueId: "uniqueId",
   startDate: "startDate",
